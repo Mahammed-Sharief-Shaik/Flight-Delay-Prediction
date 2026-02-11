@@ -1,0 +1,6 @@
+.venv/
+
+# Dataset
+*.parquet
+*.csv
+data/
