@@ -3,6 +3,8 @@ from pydantic import BaseModel
 import joblib
 import numpy as np
 import pandas as pd
+from fastapi.middleware.cors import CORSMiddleware
+
 
 # Load saved model, preprocessor, threshold
 model = joblib.load("flight_delay_model.pkl")
@@ -11,6 +13,14 @@ threshold = joblib.load("flight_delay_threshold.pkl")
 
 # Create FastAPI app
 app = FastAPI(title="Flight Delay Prediction API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Input schema
 class FlightInput(BaseModel):
