@@ -4,3 +4,5 @@
 *.parquet
 *.csv
 data/
+
+__pycache__
