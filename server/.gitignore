@@ -4,5 +4,5 @@
 *.parquet
 *.csv
 data/
-
+.vscode
 __pycache__

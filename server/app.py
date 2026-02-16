@@ -57,18 +57,34 @@ def predict_delay(input: FlightInput):
 
     # Create cyclic features
     data = create_features(data)
+    airline_lookup = joblib.load("airline_delay_rate.pkl")
+    origin_lookup = joblib.load("origin_delay_rate.pkl")
+    route_lookup = joblib.load("route_delay_rate.pkl")
+    hour_lookup = joblib.load("hour_delay_rate.pkl")
 
     # NOTE: Delay rate features are not available for new unseen flights
     # We fill with global average
+    # global_mean = 0.17
+
+    # data["AirlineDelayRate"] = global_mean
+    # data["OriginDelayRate"] = global_mean
+    # data["RouteDelayRate"] = global_mean
+    # data["HourDelayRate"] = global_mean
     global_mean = 0.17
 
-    data["AirlineDelayRate"] = global_mean
-    data["OriginDelayRate"] = global_mean
-    data["RouteDelayRate"] = global_mean
-    data["HourDelayRate"] = global_mean
+    data["Route"] = data["Origin"] + "_" + data["Dest"]
+
+    data["AirlineDelayRate"] = data["Airline"].map(airline_lookup).fillna(global_mean)
+
+    data["OriginDelayRate"] = data["Origin"].map(origin_lookup).fillna(global_mean)
+
+    data["RouteDelayRate"] = data["Route"].map(route_lookup).fillna(global_mean)
+
+    data["HourDelayRate"] = data["DepHour"].map(hour_lookup).fillna(global_mean)
+
 
     # Remove DepHour (not used directly)
-    data = data.drop(columns=["DepHour"])
+    data = data.drop(columns=["DepHour","Route"])
 
     # Preprocess
     processed = preprocessor.transform(data)

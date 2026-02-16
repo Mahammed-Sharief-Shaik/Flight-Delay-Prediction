@@ -99,7 +99,7 @@ function App() {
         </motion.div>
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-10 flex flex-col items-center justify-center min-h-screen">
+      <div className="relative z-10 container mx-auto px-4  flex flex-col items-center justify-center min-h-screen">
         
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -116,7 +116,7 @@ function App() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2 }}
-          className="w-full max-w-4xl bg-gray-900/60 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-8 shadow-2xl grid md:grid-cols-2 gap-8"
+          className="w-full lg:w-9/10 bg-gray-900/60 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-8 shadow-2xl grid md:grid-cols-2 gap-8"
         >
           
           {/* LEFT COLUMN - INPUTS */}
