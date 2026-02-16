@@ -116,7 +116,7 @@ function App() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2 }}
-          className="w-full lg:w-9/10 bg-gray-900/60 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-8 shadow-2xl grid md:grid-cols-2 gap-8"
+          className="w-full lg:w-9/10 bg-gray-900/60 backdrop-blur-xl border border-gray-700/50 rounded-3xl p-4 lg:p-8 shadow-2xl grid md:grid-cols-2 gap-8"
         >
           
           {/* LEFT COLUMN - INPUTS */}
