@@ -1,5 +1,5 @@
 .venv/
-
+.env
 # Dataset
 *.parquet
 *.csv
